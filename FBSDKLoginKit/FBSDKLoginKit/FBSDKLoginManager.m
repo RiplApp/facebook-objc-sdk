@@ -60,6 +60,11 @@ typedef NS_ENUM(NSInteger, FBSDKLoginManagerState) {
   }
 }
 
+-(void) clearFacebookCookies
+{
+   [ FBSDKInternalUtility deleteFacebookCookies ];
+}
+
 - (instancetype)init
 {
   self = [super init];
@@ -832,7 +837,6 @@ typedef NS_ENUM(NSInteger, FBSDKLoginManagerState) {
 - (void)performWebLogInWithParameters:(NSDictionary *)loginParams handler:(void(^)(BOOL, NSError*))handler
 {
   [FBSDKInternalUtility registerTransientObject:self];
-  [FBSDKInternalUtility deleteFacebookCookies];
   NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:loginParams];
   parameters[@"title"] = NSLocalizedStringWithDefaultValue(@"LoginWeb.LogInTitle",
                                                            @"FacebookSDK",

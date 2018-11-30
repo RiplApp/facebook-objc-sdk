@@ -126,8 +126,10 @@ typedef NS_ENUM(NSUInteger, FBSDKLoginBehavior)
  */
 @property (assign, nonatomic) FBSDKLoginBehavior loginBehavior;
 
-/**
 
+-(void) clearFacebookCookies;
+
+/**
 @warning use logInWithReadPermissions:fromViewController:handler: instead
  */
 - (void)logInWithReadPermissions:(NSArray *)permissions handler:(FBSDKLoginManagerRequestTokenHandler)handler
